@@ -1,0 +1,69 @@
+import { useMemo } from 'react';
+
+interface question {
+  category: string;
+  type: string;
+  difficulty: string;
+  question: string;
+  correct_answer: string;
+  incorrect_answers: string[];
+}
+
+interface QuestionProps {
+  setCurrentQuestion: any;
+  question: question;
+  maxQuestion: number;
+  currentQuestion: string | number;
+  setQuizFinish: any;
+  setScore: any;
+  setUserAnswer: any;
+}
+const Question = ({
+  question,
+  setCurrentQuestion,
+  maxQuestion,
+  currentQuestion,
+  setQuizFinish,
+  setScore,
+  setUserAnswer,
+}: QuestionProps) => {
+  const options = useMemo(() => {
+    return [...question.incorrect_answers, question.correct_answer].sort(
+      () => Math.random() - 0.5
+    );
+  }, [question]);
+
+  const handleAnswerClick = (answer: string | number) => {
+    if (answer === question.correct_answer) {
+      setUserAnswer((prev: any) => [...prev, answer]);
+      setScore((prev: number) => prev + 1);
+    }
+    if (currentQuestion < maxQuestion - 1) {
+      return setCurrentQuestion((prev: any) => prev + 1);
+    }
+    return setQuizFinish(true);
+  };
+
+  return (
+    <div className="w-full pb-24">
+      <div className="mt-6 p-12 rounded-lg input-color">
+        <h1 className="text-4xl">{question.question}</h1>
+        <div className="flex flex-col">
+          {options.map((optionAnswer: any, idx: number) => {
+            return (
+              <div
+                key={idx}
+                onClick={() => handleAnswerClick(optionAnswer)}
+                className="hover:scale-105 ease-in-out duration-75 hover:text-gray-300 cursor-pointer bg-gradient-to-r from-indigo-900 to-indigo-700 p-4 rounded-full mt-6 mb-2 "
+              >
+                {optionAnswer}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Question;

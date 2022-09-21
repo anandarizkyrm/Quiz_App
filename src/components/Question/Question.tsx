@@ -14,7 +14,7 @@ interface QuestionProps {
   question: question;
   maxQuestion: number;
   currentQuestion: string | number;
-  setQuizFinish: any;
+  setQuizStart: any;
   setScore: any;
   setUserAnswer: any;
 }
@@ -23,7 +23,7 @@ const Question = ({
   setCurrentQuestion,
   maxQuestion,
   currentQuestion,
-  setQuizFinish,
+  setQuizStart,
   setScore,
   setUserAnswer,
 }: QuestionProps) => {
@@ -34,14 +34,14 @@ const Question = ({
   }, [question]);
 
   const handleAnswerClick = (answer: string | number) => {
+    setUserAnswer((prev: any) => [...prev, answer]);
     if (answer === question.correct_answer) {
-      setUserAnswer((prev: any) => [...prev, answer]);
       setScore((prev: number) => prev + 1);
     }
     if (currentQuestion < maxQuestion - 1) {
       return setCurrentQuestion((prev: any) => prev + 1);
     }
-    return setQuizFinish(true);
+    return setQuizStart(false);
   };
 
   return (

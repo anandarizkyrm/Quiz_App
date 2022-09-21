@@ -1,4 +1,4 @@
-import { isQuizFinish } from '../../atoms';
+import { isQuizStart } from '../../atoms';
 import Loading from '../Loading/Loading';
 import Question from '../Question/Question';
 import Result from './Result';
@@ -7,18 +7,17 @@ import { useState } from 'react';
 
 const IsQuizStart = ({ response, time }: any) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [quizFinish, setQuizFinish] = useAtom(isQuizFinish);
+  const [quizStart, setQuizStart] = useAtom(isQuizStart);
   const [score, setScore] = useState(0);
   const [userAnswer, setUserAnswer] = useState<number[]>([]);
 
-  console.log(userAnswer);
   return (
     <div className="w-full">
       {!response ? (
         <Loading />
       ) : (
         <>
-          {quizFinish ? (
+          {!quizStart ? (
             <Result userAnswer={userAnswer} score={score} />
           ) : (
             <>
@@ -39,7 +38,7 @@ const IsQuizStart = ({ response, time }: any) => {
                 maxQuestion={response.results.length}
                 setUserAnswer={setUserAnswer}
                 currentQuestion={currentQuestion}
-                setQuizFinish={setQuizFinish}
+                setQuizStart={setQuizStart}
                 setScore={setScore}
               />
             </>

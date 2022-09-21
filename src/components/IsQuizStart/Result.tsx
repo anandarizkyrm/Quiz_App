@@ -9,7 +9,15 @@ interface ResultProps {
 
 const Result = ({ score, userAnswer }: ResultProps) => {
   const totalQuestion: any = import.meta.env.VITE_TOTAL_ANSWER;
-  const [_, setIsQuizStart] = useAtom(isQuizStart);
+  const [restartQuiz, setRestartQuiz] = useAtom(isQuizStart);
+  // const [restartQuiz, setRestartQuiz] = useAtom(isQuizStart);
+
+  // const [_, setIsQuizStart] = useAtom(isQuizStart);
+
+  // const restartQuiz = () =>{
+  //   setRestartQuiz(false);
+  //   se
+  // }
   return (
     <div className="w-full border input-color border-gray-700 p-6 rounded-lg flex flex-col  justify-center mt-12">
       <div>
@@ -46,10 +54,10 @@ const Result = ({ score, userAnswer }: ResultProps) => {
           </table>
         </div>
         <button
-          onClick={() => setIsQuizStart(true)}
+          onClick={() => setRestartQuiz(false)}
           className="bg-blue-700 p-2 rounded-lg float-right px-2 hover:bg-blue-800 font-bold"
         >
-          Start Again ?
+          Return Home ?
         </button>
       </div>
     </div>

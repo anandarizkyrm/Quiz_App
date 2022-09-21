@@ -1,4 +1,4 @@
-import { isQuizStart } from '../../atoms';
+import { isQuizOngoing } from '../../atoms';
 import Loading from '../Loading/Loading';
 import Question from '../Question/Question';
 import Result from './Result';
@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 const IsQuizStart = ({ response, time }: any) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [quizStart, setQuizStart] = useAtom(isQuizStart);
+  const [quizOngoing, setQuizOngoing] = useAtom(isQuizOngoing);
   const [score, setScore] = useState(0);
   const [userAnswer, setUserAnswer] = useState<number[]>([]);
 
@@ -17,7 +17,7 @@ const IsQuizStart = ({ response, time }: any) => {
         <Loading />
       ) : (
         <>
-          {!quizStart ? (
+          {!quizOngoing ? (
             <Result userAnswer={userAnswer} score={score} />
           ) : (
             <>
@@ -38,7 +38,7 @@ const IsQuizStart = ({ response, time }: any) => {
                 maxQuestion={response.results.length}
                 setUserAnswer={setUserAnswer}
                 currentQuestion={currentQuestion}
-                setQuizStart={setQuizStart}
+                setQuizOngoing={setQuizOngoing}
                 setScore={setScore}
               />
             </>

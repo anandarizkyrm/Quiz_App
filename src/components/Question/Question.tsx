@@ -1,3 +1,4 @@
+import parse from 'html-react-parser';
 import { useMemo } from 'react';
 
 interface question {
@@ -14,7 +15,7 @@ interface QuestionProps {
   question: question;
   maxQuestion: number;
   currentQuestion: string | number;
-  setQuizStart: any;
+  setQuizOngoing: any;
   setScore: any;
   setUserAnswer: any;
 }
@@ -23,7 +24,7 @@ const Question = ({
   setCurrentQuestion,
   maxQuestion,
   currentQuestion,
-  setQuizStart,
+  setQuizOngoing,
   setScore,
   setUserAnswer,
 }: QuestionProps) => {
@@ -41,13 +42,13 @@ const Question = ({
     if (currentQuestion < maxQuestion - 1) {
       return setCurrentQuestion((prev: any) => prev + 1);
     }
-    return setQuizStart(false);
+    return setQuizOngoing(false);
   };
 
   return (
     <div className="w-full pb-24">
       <div className="mt-6 p-12 rounded-lg input-color">
-        <h1 className="text-4xl">{question.question}</h1>
+        <h1 className="text-4xl">{parse(question.question)}</h1>
         <div className="flex flex-col">
           {options.map((optionAnswer: any, idx: number) => {
             return (

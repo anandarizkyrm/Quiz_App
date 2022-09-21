@@ -6,4 +6,5 @@ import {atom } from "jotai"
 export const userDataFromLocalStorage : any = atomWithStorage('userData', null)
 
 
-export const isQuizStart  = atom(false)
+export const isQuizOngoing  = atom(false)
+export const isQuizStart = atom(false)

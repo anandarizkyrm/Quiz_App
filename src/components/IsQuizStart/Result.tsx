@@ -10,14 +10,7 @@ interface ResultProps {
 const Result = ({ score, userAnswer }: ResultProps) => {
   const totalQuestion: any = import.meta.env.VITE_TOTAL_ANSWER;
   const [restartQuiz, setRestartQuiz] = useAtom(isQuizStart);
-  // const [restartQuiz, setRestartQuiz] = useAtom(isQuizStart);
 
-  // const [_, setIsQuizStart] = useAtom(isQuizStart);
-
-  // const restartQuiz = () =>{
-  //   setRestartQuiz(false);
-  //   se
-  // }
   return (
     <div className="w-full border input-color border-gray-700 p-6 rounded-lg flex flex-col  justify-center mt-12">
       <div>

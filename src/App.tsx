@@ -1,14 +1,17 @@
+import { userDataFromLocalStorage } from './atoms';
 import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { LayoutMain } from './layout/LayoutMain';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import { useAtom } from 'jotai';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import colors from 'tailwindcss/colors';
 
 function App(): JSX.Element {
   const location = useLocation();
+  const [userData, setUserData] = useAtom<any>(userDataFromLocalStorage);
   return (
     <div className="App">
       <Toaster
@@ -25,7 +28,7 @@ function App(): JSX.Element {
           <Route
             index
             element={
-              <ProtectedRoute user={true}>
+              <ProtectedRoute user={userData}>
                 <Home />
               </ProtectedRoute>
             }

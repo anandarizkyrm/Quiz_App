@@ -19,25 +19,25 @@ const Result = ({ score, userAnswer }: ResultProps) => {
           <table className="text-2xl">
             <tbody>
               <tr>
-                <td>Correct Answer : </td>
+                <td>Correct Answers : </td>
                 <td className="pl-12 text-gray-300 font-bold"> {score}</td>
               </tr>
               <tr>
-                <td>Incorrect Answer : </td>
+                <td>Incorrect Answers : </td>
                 <td className="pl-12 text-gray-300 font-bold">
                   {' '}
                   {totalQuestion - score}
                 </td>
               </tr>
               <tr>
-                <td>Answered Question : </td>
+                <td>Answered Questions: </td>
                 <td className="pl-12 text-gray-300 font-bold">
                   {' '}
                   {userAnswer.length}
                 </td>
               </tr>
               <tr>
-                <td>Total Question: </td>
+                <td>Total Questions: </td>
                 <td className="pl-12 text-gray-300 font-bold">
                   {' '}
                   {totalQuestion}

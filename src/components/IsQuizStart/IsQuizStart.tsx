@@ -24,7 +24,8 @@ const IsQuizStart = ({ response, time }: any) => {
               <div className="flex justify-between items-center">
                 <div>
                   <h1 className="text-5xl font-bold">
-                    Question Number {currentQuestion + 1}
+                    Question Number {currentQuestion + 1} /{' '}
+                    {import.meta.env.VITE_TOTAL_ANSWER}
                   </h1>
                   <p className="py-4 text-gray-500">
                     click to the right answer

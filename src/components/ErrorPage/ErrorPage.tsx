@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ErrorPage {
   code: number;
   msg: string;

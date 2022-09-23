@@ -1,4 +1,3 @@
-import React from 'react';
 import { ImSpinner2 as Spinner } from 'react-icons/im';
 
 const Loading = () => {

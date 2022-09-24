@@ -1,4 +1,5 @@
 import { userDataFromLocalStorage } from './atoms';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { LayoutMain } from './layout/LayoutMain';
@@ -35,6 +36,7 @@ function App(): JSX.Element {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </div>

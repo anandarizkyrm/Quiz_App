@@ -3,7 +3,10 @@ interface ErrorPage {
   msg: string;
 }
 
-const ErrorPage = ({ code, msg }: ErrorPage) => (
+const ErrorPage = ({
+  code = 404,
+  msg = 'Page Not Found',
+}: Partial<ErrorPage>) => (
   <div className="flex items-center justify-center w-full h-screen">
     <section className="flex flex-col text-center">
       <h1 className="mb-4">
@@ -12,7 +15,7 @@ const ErrorPage = ({ code, msg }: ErrorPage) => (
       <p className="mb-6">The page you&apos;re looking for are not found 🔍</p>
       <a
         className="inline-flex items-center justify-center font-semibold py-2.5 px-4 rounded-lg transition-all bg-primary-5 text-theme-1 hover:bg-primary-6 ring-primary-5 dark:ring-primary-4 focus-visible:ring max-w-max mx-auto gap-2"
-        href="/signup"
+        href="/"
       >
         <svg
           stroke="currentColor"

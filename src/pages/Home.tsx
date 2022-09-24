@@ -59,7 +59,7 @@ const Home = () => {
           </div>
           <button
             onClick={startQuiz}
-            className="bg-gradient-to-r from-indigo-900 to-indigo-700 p-12 w-32 h-32 rounded-full hover:bg-slate-900"
+            className="bg-gradient-to-r from-indigo-900 to-indigo-700 p-12 w-32 h-32 rounded-full hover:bg-slate-900 hover:font-bold"
           >
             Start
           </button>

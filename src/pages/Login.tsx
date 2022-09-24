@@ -83,14 +83,8 @@ const Login = (): JSX.Element => {
             />
             {errors.password && <InputError msg={'Password is required.'} />}
           </div>
-          <a
-            className="max-w-max border-0 p-0 ml-auto text-error-1"
-            href="/forgot-password"
-          >
-            Reset All ?
-          </a>
         </div>
-        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-2.5">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-3">
           <button className="inline-flex items-center justify-center rounded-lg outline-none transition-all focus-visible:ring  bg-blue-900 gray-1 hover:bg-blue-700 w-full py-2.5 px-6 font-semibold">
             Signin
           </button>

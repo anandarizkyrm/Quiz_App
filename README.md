@@ -4,3 +4,4 @@ Build with :
 - Typescript
 - Eslint 
 - Prettier
+- Tailwind

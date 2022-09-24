@@ -25,7 +25,7 @@ const IsQuizStart = ({ response, time }: any) => {
                 <div>
                   <h1 className="text-5xl font-bold">
                     Question Number {currentQuestion + 1} /{' '}
-                    {import.meta.env.VITE_TOTAL_ANSWER}
+                    {import.meta.env.VITE_TOTAL_QUESTIONS}
                   </h1>
                   <p className="py-4 text-gray-500">
                     click to the right answer

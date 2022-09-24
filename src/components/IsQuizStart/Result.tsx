@@ -8,7 +8,7 @@ interface ResultProps {
 }
 
 const Result = ({ score, userAnswer }: ResultProps) => {
-  const totalQuestion: any = import.meta.env.VITE_TOTAL_ANSWER;
+  const totalQuestion: any = import.meta.env.VITE_TOTAL_QUESTIONS;
   const [restartQuiz, setRestartQuiz] = useAtom(isQuizStart);
 
   return (

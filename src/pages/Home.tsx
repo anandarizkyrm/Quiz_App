@@ -11,7 +11,7 @@ import { Suspense, lazy } from 'react';
 
 const IsQuizStart = lazy(() => import('../components/IsQuizStart/IsQuizStart'));
 const url = `https://opentdb.com/api.php?amount=${
-  import.meta.env.VITE_TOTAL_ANSWER
+  import.meta.env.VITE_TOTAL_QUESTIONS
 }`;
 
 const Home = () => {

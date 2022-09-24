@@ -17,7 +17,6 @@ const Login = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const navigate = useNavigate();
   const [userData, setUserData] = useAtom(userDataFromLocalStorage);
 

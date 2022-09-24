@@ -28,7 +28,6 @@ const Home = () => {
     clearInterval(interval.current);
     setIsQuizStart(true);
     setIsQuizOngoing(true);
-    // if (!isQuizStart) return;
     if (time !== import.meta.env.VITE_TIMER_QUIZ) {
       setTime(import.meta.env.VITE_TIMER_QUIZ);
     }

@@ -1,9 +1,13 @@
-import { currentQuestionNumberLocalStorage, isQuizOngoing } from '../../atoms';
+import {
+  currentQuestionNumberLocalStorage,
+  isQuizOngoing,
+  scoreFromLocalStorage,
+  userAnswerLocalStorage,
+} from '../../atoms';
 import Loading from '../Loading/Loading';
 import Question from '../Question/Question';
 import Result from './Result';
 import { useAtom } from 'jotai';
-import { useState } from 'react';
 
 const IsQuizStart = ({
   response,
@@ -15,8 +19,9 @@ const IsQuizStart = ({
   loading: boolean;
 }) => {
   const [quizOngoing, setQuizOngoing] = useAtom(isQuizOngoing);
-  const [score, setScore] = useState(0);
-  const [userAnswer, setUserAnswer] = useState<number[]>([]);
+
+  const [score, setScore] = useAtom(scoreFromLocalStorage);
+  const [userAnswer, setUserAnswer] = useAtom(userAnswerLocalStorage);
 
   const [currentQuestionNumber, setCurrentQuestionNumber]: any = useAtom(
     currentQuestionNumberLocalStorage
@@ -41,7 +46,7 @@ const IsQuizStart = ({
                     click to the right answer
                   </p>
                 </div>
-                <h1 className="md:text-5xl text-4xl font-semibold mt-12">
+                <h1 className="md:text-5xl text-4xl font-semibold mt-12 text-gray-300">
                   {time}
                 </h1>
               </div>

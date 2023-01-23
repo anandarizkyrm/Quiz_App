@@ -16,5 +16,8 @@ export const currentQuestionNumberLocalStorage: any = atomWithStorage(
 );
 
 export const isQuizOngoing = atom(false);
-
 export const isQuizStart = atom(false);
+
+export const scoreFromLocalStorage = atomWithStorage<number>('score', 0);
+
+export const userAnswerLocalStorage = atomWithStorage<any[]>('userAnswer', []);

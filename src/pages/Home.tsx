@@ -4,6 +4,8 @@ import {
   isQuizStart as quizStart,
   quizStartAtLocalStorage,
   currentQuestionNumberLocalStorage,
+  scoreFromLocalStorage,
+  userAnswerLocalStorage,
 } from '../atoms';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import { useFetch } from '../hooks/useFetch';
@@ -42,6 +44,11 @@ const Home = () => {
   const interval: React.MutableRefObject<any> = useRef(null);
   const isStart = !isQuizStart && !isQuizOngoing;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [score, setScore] = useAtom(scoreFromLocalStorage);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [userAnswer, setUserAnswer] = useAtom(userAnswerLocalStorage);
+
   const syncTimerSeconds = Math.floor(
     parseFloat(quizStartAt) + parseFloat(timer) - getSecondFromDateNow()
   );
@@ -49,6 +56,8 @@ const Home = () => {
   const startQuiz = async () => {
     setIsQuizStart(true);
     await fetchData();
+    setScore(0);
+    setUserAnswer([]);
     setCurrentQuestionNumber(0);
     clearInterval(interval.current);
     setQuizStartAt(getSecondFromDateNow());

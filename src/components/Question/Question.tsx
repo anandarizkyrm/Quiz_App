@@ -1,4 +1,6 @@
+import { quizStartAtLocalStorage } from '../../atoms';
 import parse from 'html-react-parser';
+import { useAtom } from 'jotai';
 import { useMemo } from 'react';
 
 interface question {
@@ -28,6 +30,8 @@ const Question = ({
   setScore,
   setUserAnswer,
 }: QuestionProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setQuizStartAt]: any = useAtom(quizStartAtLocalStorage);
   const options = useMemo(() => {
     return [...question.incorrect_answers, question.correct_answer].sort(
       () => Math.random() - 0.5
@@ -42,13 +46,14 @@ const Question = ({
     if (currentQuestion < maxQuestion - 1) {
       return setCurrentQuestion((prev: any) => prev + 1);
     }
+    setQuizStartAt(null);
     return setQuizOngoing(false);
   };
 
   return (
     <div className="w-full pb-24">
-      <div className="mt-6 p-12 rounded-lg input-color">
-        <h1 className="text-4xl">{parse(question.question)}</h1>
+      <div className="mt-6 md:p-12 p-6 rounded-lg input-color">
+        <h1 className="md:text-4xl text-2xl">{parse(question.question)}</h1>
         <div className="flex flex-col">
           {options.map((optionAnswer: any, idx: number) => {
             return (

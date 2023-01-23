@@ -21,24 +21,35 @@ pre {
   box-sizing: border-box;
 }
 
-body{
+body {
   background: #171717;
-  color: #DBDBDB ;
+  color: #dbdbdb;
 }
-.layout{
+.layout {
   max-width: 48rem;
   width: 92%;
   margin-left: auto;
   margin-right: auto;
 }
-.width{
+.width {
   max-width: 48rem;
 }
 
 .input-color {
-  background-color : #212121;
+  background-color: #212121;
 }
 
-.gray-1{
-  color : #DBDBDB;
+.gray-1 {
+  color: #dbdbdb;
+}
+/* Phone */
+@media only screen and (max-width: 480px) {
+  .width {
+    padding: 32px;
+  }
+}
+
+/* Tablet */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  /* CSS styles for tablets here */
 }

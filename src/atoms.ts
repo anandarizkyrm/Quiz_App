@@ -1,9 +1,20 @@
-import { atomWithStorage } from 'jotai/utils'
-import {atom } from "jotai"
+import { atom } from 'jotai';
+import { atomWithStorage } from 'jotai/utils';
 
+export const userDataFromLocalStorage: any = atomWithStorage('userData', null);
 
-export const userDataFromLocalStorage : any = atomWithStorage('userData', null)
+export const quizStartAtLocalStorage: any = atomWithStorage(
+  'quizStartAt',
+  null
+);
 
-export const isQuizOngoing  = atom(false)
+export const questionFromLocalStorage: any = atomWithStorage('questions', null);
 
-export const isQuizStart = atom(false)
+export const currentQuestionNumberLocalStorage: any = atomWithStorage(
+  'currentQuestion',
+  0
+);
+
+export const isQuizOngoing = atom(false);
+
+export const isQuizStart = atom(false);

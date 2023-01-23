@@ -12,8 +12,7 @@ import colors from 'tailwindcss/colors';
 
 function App(): JSX.Element {
   const location = useLocation();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [userData, _] = useAtom<any>(userDataFromLocalStorage);
+  const [userData]: any = useAtom(userDataFromLocalStorage);
   return (
     <div className="App">
       <Toaster

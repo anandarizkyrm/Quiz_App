@@ -1,7 +1,9 @@
 Build with :
-- Vite 
-- React 
+
+- Vite
+- React
 - Typescript
-- Eslint 
+- Eslint
+- Jotai
 - Prettier
 - Tailwind

@@ -9,7 +9,8 @@
     "test": "vitest",
     "preview": "vite preview",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json,cjs}",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "precommit": "yarn test"
   },
   "dependencies": {
     "eslint-plugin-react": "^7.31.8",

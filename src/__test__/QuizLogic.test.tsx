@@ -96,7 +96,7 @@ afterEach(() => {
   cleanup();
 });
 describe('Quiz Logic', () => {
-  it('Quiz Logic Render Correctly', async () => {
+  it('Quiz Home Correctly with Username on it', async () => {
     renderApp();
 
     // check if the welcome message is correct
@@ -120,7 +120,7 @@ describe('Quiz Logic', () => {
 
     await waitFor(() => {
       const optA = screen.getByTestId('option-0');
-      mockQuestion.results.forEach((item, idx) => {
+      mockQuestion.results.forEach((_, idx) => {
         const number = screen.getByTestId(`number-${idx + 1}`);
         expect(number).toBeInTheDocument();
         fireEvent.click(optA);
@@ -131,7 +131,7 @@ describe('Quiz Logic', () => {
     fireEvent.click(returnHome);
   });
 
-  it('Quiz Choose the right answer and make sure the result is correct', async () => {
+  it('Quiz Choose the right answer and make sure all the result is correct', async () => {
     renderApp();
 
     // check quiz start logic
@@ -163,25 +163,83 @@ describe('Quiz Logic', () => {
       const optionNumber5 = await screen.getByText('False');
       expect(optionNumber5).toBeInTheDocument();
       fireEvent.click(optionNumber5);
-
-      // check result
-
-      const correctAnswer = screen.getByTestId('correct-answer');
-      expect(correctAnswer.innerHTML).toEqual('5');
-
-      const incorrectAnswer = screen.getByTestId('incorrect-answer');
-      expect(incorrectAnswer.innerHTML).toEqual('0');
-
-      const answeredQuestions = screen.getByTestId('answered-questions');
-      expect(answeredQuestions.innerHTML).toEqual('5');
-
-      const totalQuestions = screen.getByTestId('total-questions');
-      expect(totalQuestions.innerHTML).toEqual('5');
-
-      // return home btn test
-
-      const returnHome = await screen.getByTestId('return-home-btn');
-      fireEvent.click(returnHome);
     });
+  });
+
+  it('Make sure all the result is correct', async () => {
+    renderApp();
+
+    const correctAnswer = screen.getByTestId('correct-answer');
+    expect(correctAnswer.innerHTML).toEqual('5');
+
+    const incorrectAnswer = screen.getByTestId('incorrect-answer');
+    expect(incorrectAnswer.innerHTML).toEqual('0');
+
+    const answeredQuestions = screen.getByTestId('answered-questions');
+    expect(answeredQuestions.innerHTML).toEqual('5');
+
+    const totalQuestions = screen.getByTestId('total-questions');
+    expect(totalQuestions.innerHTML).toEqual('5');
+
+    // return home btn test
+
+    const returnHome = await screen.getByTestId('return-home-btn');
+    fireEvent.click(returnHome);
+  });
+
+  it('Quiz Choose the 3 right answer and make sure the result has 3 corrent answer', async () => {
+    renderApp();
+
+    // check quiz start logic
+    const btnStart = await screen.getByTestId('start-quiz');
+
+    fetchMock.get(url, JSON.stringify(mockQuestion));
+
+    expect(btnStart).toBeInTheDocument();
+    fireEvent.click(btnStart);
+
+    await waitFor(async () => {
+      // choose the right answer
+      const optionNumber1 = await screen.getByText('Link');
+      expect(optionNumber1).toBeInTheDocument();
+      fireEvent.click(optionNumber1);
+
+      const optionNumber2 = await screen.getByText('Twin Iron Engine');
+      expect(optionNumber2).toBeInTheDocument();
+      fireEvent.click(optionNumber2);
+
+      const optionNumber3 = await screen.getByText('Half-Life: Opposing Force');
+      expect(optionNumber3).toBeInTheDocument();
+      fireEvent.click(optionNumber3);
+
+      const optoptionNumber4 = await screen.getByText('Leni');
+      expect(optoptionNumber4).toBeInTheDocument();
+      fireEvent.click(optoptionNumber4);
+
+      const optionNumber5 = await screen.getByText('True');
+      expect(optionNumber5).toBeInTheDocument();
+      fireEvent.click(optionNumber5);
+    });
+  });
+
+  it('Make sure all the result is correct', async () => {
+    renderApp();
+
+    const correctAnswer = screen.getByTestId('correct-answer');
+    expect(correctAnswer.innerHTML).toEqual('3');
+
+    const incorrectAnswer = screen.getByTestId('incorrect-answer');
+    expect(incorrectAnswer.innerHTML).toEqual('2');
+
+    const answeredQuestions = screen.getByTestId('answered-questions');
+    expect(answeredQuestions.innerHTML).toEqual('5');
+
+    const totalQuestions = screen.getByTestId('total-questions');
+    expect(totalQuestions.innerHTML).toEqual('5');
+
+    // return home btn test
+
+    const returnHome = await screen.getByTestId('return-home-btn');
+    fireEvent.click(returnHome);
   });
 });

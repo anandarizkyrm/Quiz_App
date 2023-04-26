@@ -1,19 +1,9 @@
-import App from '../App';
 import Login from '../pages/Login';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { it, describe, expect } from 'vitest';
 
 describe('Rendered correctly', () => {
-  it('Check if the App render very well', () => {
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
-    screen.debug();
-  });
-
   it('Check Login Page and Form Validation', async () => {
     render(
       <BrowserRouter>

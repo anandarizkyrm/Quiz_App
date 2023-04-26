@@ -8,7 +8,9 @@
     "build": "tsc && vite build",
     "test": "vitest",
     "preview": "vite preview",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json,cjs}"
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json,cjs}",
+    "prepare": "husky install",
+    "precommit": "yarn test"
   },
   "dependencies": {
     "eslint-plugin-react": "^7.31.8",
@@ -59,6 +61,8 @@
     ],
     "**/*.{css,scss,md,html,json}": [
       "prettier --write"
-    ]
+    ],
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }

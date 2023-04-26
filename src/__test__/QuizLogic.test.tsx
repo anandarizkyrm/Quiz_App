@@ -179,6 +179,7 @@ describe('Quiz Logic', () => {
       expect(totalQuestions.innerHTML).toEqual('5');
 
       // return home btn test
+
       const returnHome = await screen.getByTestId('return-home-btn');
       fireEvent.click(returnHome);
     });

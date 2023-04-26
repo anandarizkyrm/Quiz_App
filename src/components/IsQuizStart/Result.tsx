@@ -20,26 +20,37 @@ const Result = ({ score, userAnswer }: ResultProps) => {
             <tbody>
               <tr>
                 <td>Correct Answers : </td>
-                <td className="pl-12 text-gray-300 font-bold"> {score}</td>
+                <td
+                  data-testid="correct-answer"
+                  className="pl-12 text-gray-300 font-bold"
+                >
+                  {score}
+                </td>
               </tr>
               <tr>
                 <td>Incorrect Answers : </td>
-                <td className="pl-12 text-gray-300 font-bold">
-                  {' '}
+                <td
+                  data-testid="incorrect-answer"
+                  className="pl-12 text-gray-300 font-bold"
+                >
                   {totalQuestion - score}
                 </td>
               </tr>
               <tr>
                 <td>Answered Questions: </td>
-                <td className="pl-12 text-gray-300 font-bold">
-                  {' '}
+                <td
+                  data-testid="answered-questions"
+                  className="pl-12 text-gray-300 font-bold"
+                >
                   {userAnswer.length}
                 </td>
               </tr>
               <tr>
                 <td>Total Questions: </td>
-                <td className="pl-12 text-gray-300 font-bold">
-                  {' '}
+                <td
+                  data-testid="total-questions"
+                  className="pl-12 text-gray-300 font-bold"
+                >
                   {totalQuestion}
                 </td>
               </tr>
@@ -47,6 +58,7 @@ const Result = ({ score, userAnswer }: ResultProps) => {
           </table>
         </div>
         <button
+          data-testid="return-home-btn"
           onClick={() => setRestartQuiz(false)}
           className="bg-blue-700 p-2 rounded-lg float-right px-2 hover:bg-blue-800 font-light mt-12"
         >

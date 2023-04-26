@@ -53,12 +53,15 @@ const Question = ({
   return (
     <div className="w-full pb-24">
       <div className="mt-6 md:p-12 p-6 rounded-lg input-color">
-        <h1 className="md:text-4xl text-2xl">{parse(question.question)}</h1>
+        <h1 data-testid="question" className="md:text-4xl text-2xl">
+          {parse(question.question)}
+        </h1>
         <div className="flex flex-col">
           {options.map((optionAnswer: any, idx: number) => {
             return (
               <div
                 key={idx}
+                data-testid={`option-${idx}`}
                 onClick={() => handleAnswerClick(optionAnswer)}
                 className="hover:scale-105 ease-in-out duration-75 hover:text-gray-300 cursor-pointer bg-gradient-to-r from-indigo-900 to-indigo-700 p-4 rounded-full mt-6 mb-2 "
               >

@@ -38,7 +38,10 @@ const IsQuizStart = ({
             <>
               <div className="flex justify-between items-center ">
                 <div>
-                  <h1 className="text-3xl md:text-5xl font-bold">
+                  <h1
+                    data-testid={`number-${currentQuestionNumber + 1}`}
+                    className="text-3xl md:text-5xl font-bold"
+                  >
                     Question Number {currentQuestionNumber + 1} /{' '}
                     {import.meta.env.VITE_TOTAL_QUESTIONS}
                   </h1>

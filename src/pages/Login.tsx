@@ -21,7 +21,7 @@ const Login = (): JSX.Element => {
   const [userData, setUserData] = useAtom(userDataFromLocalStorage);
 
   const onSubmit = async (args: Partial<formPayload>) => {
-    const tst = toast.loading('Loading..');
+    const tst = toast.loading('Loading...');
     if (args) {
       await setUserData(JSON.stringify(args));
       toast.success('Signed in!');
@@ -39,7 +39,10 @@ const Login = (): JSX.Element => {
   return (
     <section className="flex flex-col gap-4 pt-28 md:gap-8">
       <div className="w-full">
-        <h1 className="text-4xl md:text-5xl mb-2 font-bold">
+        <h1
+          data-testid="welcome-header"
+          className="text-4xl md:text-5xl mb-2 font-bold"
+        >
           Welcome to QuizzApp!
         </h1>
         <p className="text-sm">Please sign in to start the quiz app, dude.</p>
@@ -58,6 +61,7 @@ const Login = (): JSX.Element => {
           <label htmlFor="username">Username</label>
           <input
             id="username"
+            data-testid="username-input"
             placeholder="Your QuizzApp username address"
             autoComplete="off"
             type="text"
@@ -73,6 +77,7 @@ const Login = (): JSX.Element => {
           <div className="relative">
             <input
               autoComplete="off"
+              data-testid="password-input"
               id="password"
               placeholder="Your QuizzApp password"
               type="password"
@@ -85,7 +90,10 @@ const Login = (): JSX.Element => {
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-3">
-          <button className="inline-flex items-center justify-center rounded-lg outline-none transition-all focus-visible:ring  bg-blue-900 gray-1 hover:bg-blue-700 w-full py-2.5 px-6 font-semibold">
+          <button
+            data-testid="signin-button"
+            className="inline-flex items-center justify-center rounded-lg outline-none transition-all focus-visible:ring  bg-blue-900 gray-1 hover:bg-blue-700 w-full py-2.5 px-6 font-semibold"
+          >
             Signin
           </button>
         </div>

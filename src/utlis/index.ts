@@ -13,3 +13,7 @@ export function secondsToHms(d: any) {
   let sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
   return hDisplay + mDisplay + sDisplay;
 }
+
+export function cleanUpString(str: string) {
+  return str.replace(/[^\w\s]/gi, '');
+}
